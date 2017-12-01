@@ -6,7 +6,7 @@ public class Point {
 
     CalculateDistance p1 = new CalculateDistance(0.0, 0.0);
     CalculateDistance p2 = new CalculateDistance(3.0, 4.0);
-    System.out.println("The distance between points P1" + "(" + p1.x + "," + p1.y + ") and P2" + "(" + p2.x + "," + p2.y + ") is " + p1.distance(p1,p2));
+    System.out.println("The distance between points P1" + "(" + p1.x + "," + p1.y + ") and P2" + "(" + p2.x + "," + p2.y + ") is " + p1.distance(p2));
 
   }
 }
