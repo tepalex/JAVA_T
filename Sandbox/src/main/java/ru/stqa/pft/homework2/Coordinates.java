@@ -2,10 +2,10 @@ package ru.stqa.pft.homework2;
 
 public class Coordinates {
 
-  public int x1;
-  public int y1;
-  public int x2;
-  public int y2;
+  public double x1;
+  public double y1;
+  public double x2;
+  public double y2;
 
 public Coordinates(int x1, int y1, int x2, int y2){
   this.x1=x1;
