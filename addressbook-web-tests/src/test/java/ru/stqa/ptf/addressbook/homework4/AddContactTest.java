@@ -28,18 +28,14 @@ public class AddContactTest {
     wd.findElement(By.name("pass")).click();
     wd.findElement(By.name("pass")).clear();
     wd.findElement(By.name("pass")).sendKeys(password);
+    wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
   }
 
   @Test
   public void addContactTest() {
 
-    goToLoginForm();
     fillContactData(new ContactData("Alex", "Teplov", "+70951234567", "teplovs@gmail.com"));
     submitContactCreation();
-  }
-
-  private void goToLoginForm() {
-    wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
   }
 
   private void fillContactData(ContactData contactData) {
