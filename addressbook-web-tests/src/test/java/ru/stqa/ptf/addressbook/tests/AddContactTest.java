@@ -10,11 +10,11 @@ public class AddContactTest extends TestBase {
   @Test
 
   public void testAddContact() {
-
-    app.getNavigationHelper().goToAddNewPage();
-    app.getContactHelper().fillContactData(new ContactData("Alex", "Teplov", "+74951234567", "teplovs@mail.com"));
+    app.getNavigationHelper().goToHomePage();
+    app.getContactHelper().initContact();
+    app.getContactHelper().fillContactData(new ContactData("Alex", "Teplov", "+74951234567", "teplovs@mail.com", "Test1"), true);
     app.getContactHelper().submitContactCreation();
-    app.getNavigationHelper().returnToAddNewPage();
+    app.getNavigationHelper().returnToHomePage();
 
   }
 }

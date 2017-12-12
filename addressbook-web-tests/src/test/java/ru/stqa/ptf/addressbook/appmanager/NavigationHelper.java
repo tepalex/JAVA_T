@@ -11,19 +11,22 @@ public class NavigationHelper extends BaseHelper {
   }
 
   public void gotoGroupPage() {
-    click(By.linkText("groups"));
-  }
+    if (isElementPresent(By.tagName("h1"))
+            && wd.findElement(By.tagName("h1")).getText().equals("Groups")
+            && isElementPresent(By.name("new"))) {
+      return;
+    }
+      click(By.linkText("groups"));
+      }
 
-  public void goToAddNewPage() {
-    wd.findElement(By.linkText("add new")).click();
-  }
-  public void returnToAddNewPage() {
-    wd.findElement(By.linkText("add new")).click();
-  }
   public void goToHomePage() {
     wd.findElement(By.linkText("home")).click();
   }
-    public void returnToHomePage(){
+
+  public void returnToHomePage(){
+    if (isElementPresent(By.id("maintable"))){
+      return;
+    }
     wd.findElement(By.linkText("home")).click();
   }
 }
