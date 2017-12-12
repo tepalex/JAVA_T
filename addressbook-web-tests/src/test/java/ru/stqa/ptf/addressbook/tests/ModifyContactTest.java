@@ -15,7 +15,7 @@ public class ModifyContactTest extends TestBase{
     app.getContactHelper().initModifyContact();
     app.getContactHelper().fillContactData(new ContactData("Alex", "Teplov", "+74951234567", "teplovs@mail.com", null), false);
     app.getContactHelper().submitContactUpdate();
-    app.getNavigationHelper().returnToHomePage();
+    app.getContactHelper().returnToHomePage();
 
   }
 }

@@ -16,6 +16,10 @@ public class ContactHelper extends BaseHelper {
     super(wd);
   }
 
+  public void returnToHomePage(){
+    wd.findElement(By.linkText("home")).click();
+  }
+
   public void initContact(){
     wd.findElement(By.linkText("add new")).click();
   }
@@ -39,6 +43,7 @@ public class ContactHelper extends BaseHelper {
 
   public void submitContactDeletion() {
     wd.findElement(By.xpath("//div[@id='content']/form[2]/div[2]/input")).click();
+    wd.switchTo().alert().accept();
   }
 
   public void selectContact() {

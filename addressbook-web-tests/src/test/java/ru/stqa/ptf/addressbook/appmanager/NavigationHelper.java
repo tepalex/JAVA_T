@@ -20,13 +20,9 @@ public class NavigationHelper extends BaseHelper {
       }
 
   public void goToHomePage() {
-    wd.findElement(By.linkText("home")).click();
-  }
-
-  public void returnToHomePage(){
     if (isElementPresent(By.id("maintable"))){
       return;
     }
     wd.findElement(By.linkText("home")).click();
   }
-}
+  }
