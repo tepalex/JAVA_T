@@ -12,7 +12,7 @@ public class AddContactTest extends TestBase {
   public void testAddContact() {
     app.getNavigationHelper().goToHomePage();
     app.getContactHelper().initContact();
-    app.getContactHelper().fillContactData(new ContactData("Alex", "Teplov", "+74951234567", "teplovs@mail.com", "Test1"), true);
+    app.getContactHelper().fillContactData(new ContactData("Alex1", "Teplov", "+74951234567", "teplovs@mail.com", "Test1"), true);
     app.getContactHelper().submitContactCreation();
     app.getContactHelper().returnToHomePage();
 

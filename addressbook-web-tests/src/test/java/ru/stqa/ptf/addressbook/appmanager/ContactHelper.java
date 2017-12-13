@@ -16,11 +16,11 @@ public class ContactHelper extends BaseHelper {
     super(wd);
   }
 
-  public void returnToHomePage(){
+  public void returnToHomePage() {
     wd.findElement(By.linkText("home")).click();
   }
 
-  public void initContact(){
+  public void initContact() {
     wd.findElement(By.linkText("add new")).click();
   }
 
@@ -50,11 +50,23 @@ public class ContactHelper extends BaseHelper {
     click(By.name("selected[]"));
   }
 
-  public void initModifyContact(){
+  public void initModifyContact() {
     wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img")).click();
+    //wd.findElement(By.title("selected []")).click();
   }
 
-  public void submitContactUpdate(){
+  public void submitContactUpdate() {
     wd.findElement(By.xpath("//div[@id='content']/form[1]/input[22]")).click();
+  }
+
+  public void createContact (ContactData contact){
+    initContact();
+    fillContactData(contact, true);
+    submitContactCreation();
+    returnToHomePage();
+  }
+
+  public boolean isThereAContact() {
+    return isElementPresent(By.name("selected[]"));
   }
 }
