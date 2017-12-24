@@ -70,7 +70,10 @@ public class ContactHelper extends BaseHelper {
     return isElementPresent(By.name("selected[]"));
   }
 
-  public int getGroupCount() {
+  /*public int getGroupCount() {
     return wd.findElements(By.name("selected[]")).size();
+  }*/
+
+  public int getContactCount() {return wd.findElements(By.name("selected[]")).size();
   }
 }
