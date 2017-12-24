@@ -5,6 +5,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.ptf.addressbook.Module.ContactData;
 
+import java.util.List;
+
 public class AddContactTest extends TestBase {
   FirefoxDriver wd;
 
@@ -12,13 +14,16 @@ public class AddContactTest extends TestBase {
 
   public void testAddContact() {
     app.getNavigationHelper().goToHomePage();
-    int before = app.getContactHelper().getContactCount();
+    List<ContactData> before = app.getContactHelper().getContactList();
     app.getContactHelper().initContact();
     app.getContactHelper().fillContactData(new ContactData("Alex1", "Teplov", "+74951234567", "teplovs@mail.com", "test1"), true);
     app.getContactHelper().submitContactCreation();
     app.getContactHelper().returnToHomePage();
-    int after = app.getContactHelper().getContactCount();
-    Assert.assertEquals(after, before+1);
+    List<ContactData> after = app.getContactHelper().getContactList();
+    System.out.println(after);
+    Assert.assertEquals(after.size(), before.size() + 1);
+
+
 
   }
 }
