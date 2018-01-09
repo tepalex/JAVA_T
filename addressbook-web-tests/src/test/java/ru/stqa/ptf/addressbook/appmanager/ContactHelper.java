@@ -68,13 +68,19 @@ public class ContactHelper extends BaseHelper {
     returnToHomePage();
   }
 
+  public void modifyContact(int index, ContactData contact) {
+    initModifyContact(index - 1);
+    fillContactData(contact, false);
+    submitContactUpdate();
+    returnToHomePage();
+  }
+
   public boolean isThereAContact() {
     return isElementPresent(By.name("selected[]"));
   }
 
   public int getContactCount() {return wd.findElements(By.name("selected[]")).size();
   }
-
 
     public List<ContactData> getContactList() {
     List<ContactData> contacts = new ArrayList<ContactData>();
