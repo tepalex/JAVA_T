@@ -53,10 +53,8 @@ public class ContactHelper extends BaseHelper {
   public void selectContact(int index) {
     wd.findElements(By.name("selected[]")).get(index).click();
   }
-
-  public void initModifyContact() {
-    wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img")).click();
-    //wd.findElement(By.title("selected []")).click();
+  public void initModifyContact(int index) {
+    wd.findElements(By.xpath("//table[@id='maintable']/tbody/tr/td/a/img[@title='Edit']")).get(index).click();
   }
 
   public void submitContactUpdate() {

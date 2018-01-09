@@ -20,8 +20,7 @@ public class ModifyContactTest extends TestBase{
       app.getContactHelper().createContact(new ContactData("Ivan", "Petrov", "+75001234567", "petrovs@gmail.com", "test1"));
     }
     List<ContactData> before = app.getContactHelper().getContactList();
-    app.getContactHelper().selectContact(before.size() - 1);
-    app.getContactHelper().initModifyContact();
+    app.getContactHelper().initModifyContact(before.size() - 1);
     ContactData contact = new ContactData(before.get(before.size()-1).getId(), "Alex", "Teplov", "+700000000", "teplovs@mail.com", "test1");
     app.getContactHelper().fillContactData(contact, false);
     app.getContactHelper().submitContactUpdate();
