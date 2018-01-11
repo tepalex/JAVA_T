@@ -11,7 +11,9 @@ import ru.stqa.ptf.addressbook.Module.ContactData;
 import ru.stqa.ptf.addressbook.Module.GroupData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 public class ContactHelper extends BaseHelper {
@@ -53,25 +55,36 @@ public class ContactHelper extends BaseHelper {
   public void selectContact(int index) {
     wd.findElements(By.name("selected[]")).get(index).click();
   }
-  public void initModifyContact(int index) {
-    wd.findElements(By.xpath("//table[@id='maintable']/tbody/tr/td/a/img[@title='Edit']")).get(index).click();
+
+  public void selectContactById(int id) {
+    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+  }
+
+  public void initModifyContact(int id) {
+    wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id ))).click();
   }
 
   public void submitContactUpdate() {
     wd.findElement(By.xpath("//div[@id='content']/form[1]/input[22]")).click();
   }
 
-  public void createContact (ContactData contact){
+  public void create(ContactData contact){
     initContact();
     fillContactData(contact, true);
     submitContactCreation();
     returnToHomePage();
   }
 
-  public void modifyContact(int index, ContactData contact) {
-    initModifyContact(index - 1);
+  public void modify(ContactData contact) {
+    initModifyContact(contact.getId());
     fillContactData(contact, false);
     submitContactUpdate();
+    returnToHomePage();
+  }
+
+  public void delete(ContactData contact) {
+    selectContactById(contact.getId());
+    submitContactDeletion();
     returnToHomePage();
   }
 
@@ -82,15 +95,14 @@ public class ContactHelper extends BaseHelper {
   public int getContactCount() {return wd.findElements(By.name("selected[]")).size();
   }
 
-    public List<ContactData> getContactList() {
-    List<ContactData> contacts = new ArrayList<ContactData>();
+  public Set<ContactData> all() {
+    Set<ContactData> contacts = new HashSet<ContactData>();
     List<WebElement> elements = wd.findElements(By.xpath("//table[@id='maintable']//tr[@name='entry']"));
     for (WebElement element : elements) {
       String firstname = element.findElement(By.xpath(".//td[3]")).getText();
       String lastname = element.findElement(By.xpath(".//td[2]")).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      ContactData contact = new ContactData(id, firstname, lastname, null, null, null);
-      contacts.add(contact);
+      contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname));
     }
     return contacts;
   }

@@ -1,20 +1,25 @@
 package ru.stqa.ptf.addressbook.Module;
 
 public class ContactData {
-  private int id;
-  private final String firstname;
-  private final String lastname;
-  private final String homephone;
-  private final String email;
-  private final String group;
+  private int id = Integer.MAX_VALUE;;
+  private String firstname;
+  private String lastname;
+  private String homephone;
+  private String email;
+  private String group;
 
-  public ContactData(String firstname, String lastname, String homephone, String email, String group) {
-    this.id = Integer.MAX_VALUE;
+  public int getId() {
+    return id;
+  }
+
+  public ContactData withId(int id) {
+    this.id = id;
+    return this;
+  }
+
+  public ContactData withFirstname(String firstname) {
     this.firstname = firstname;
-    this.lastname = lastname;
-    this.homephone = homephone;
-    this.email = email;
-    this.group = group;
+    return this;
   }
 
   @Override
@@ -24,33 +29,37 @@ public class ContactData {
 
     ContactData that = (ContactData) o;
 
+    if (id != that.id) return false;
     if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
     return lastname != null ? lastname.equals(that.lastname) : that.lastname == null;
   }
 
   @Override
   public int hashCode() {
-    int result = firstname != null ? firstname.hashCode() : 0;
+    int result = id;
+    result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
     result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
     return result;
   }
 
-  public ContactData(int id, String firstname, String lastname, String homephone, String email, String group) {
-    this.id = id;
-    this.firstname = firstname;
+  public ContactData withLastname(String lastname) {
     this.lastname = lastname;
+    return this;
+  }
+
+  public ContactData withHomephone(String homephone) {
     this.homephone = homephone;
+    return this;
+  }
 
+  public ContactData withEmail(String email) {
     this.email = email;
+    return this;
+  }
+
+  public ContactData withGroup(String group) {
     this.group = group;
-  }
-
-  public int getId() {
-    return id;
-  }
-
-  public void setId(int id) {
-    this.id = id;
+    return this;
   }
 
   public String getFirstname() {
