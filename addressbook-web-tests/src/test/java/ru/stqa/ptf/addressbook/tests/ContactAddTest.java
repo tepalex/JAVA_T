@@ -1,16 +1,9 @@
 package ru.stqa.ptf.addressbook.tests;
 
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.ptf.addressbook.Module.ContactData;
 import ru.stqa.ptf.addressbook.Module.Contacts;
-
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -25,7 +18,10 @@ public class ContactAddTest extends TestBase {
     Contacts before = app.contact().all();
     app.contact().initContact();
     ContactData contact = new ContactData()
-            .withFirstname("Alex").withLastname("Teplov").withHomephone("+74951234567").withEmail("teplovs@mail.com").withGroup("test1");
+            .withFirstname("Alex").withLastname("Teplov").withAddress("Address")
+            .withHomephone("4951234567").withMobilePhone("2000000").withWorkPhone("3000000")
+            .withEmail("email1@mail.com").withEmail2("email2@gmail.com").withEmail3("email3@gmail.com")
+            .withGroup("test1");
     app.contact().fillContactData(contact, true);
     app.contact().submitContactCreation();
     app.contact().returnToHomePage();
