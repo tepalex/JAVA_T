@@ -97,6 +97,7 @@ public class ContactHelper extends BaseHelper {
   }
 
   public int count() {return wd.findElements(By.name("selected[]")).size();
+    //wd.findElements(By.cssSelector("[name='selected[]']")).size();
   }
   private Contacts contactCashe = null;
 
