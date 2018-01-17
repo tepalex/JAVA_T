@@ -16,3 +16,4 @@ gradle-app.setting
 .idea/misc.xml
 Sandbox/out/production/classes/MyFirstProgram.class
 out/
+*.log
