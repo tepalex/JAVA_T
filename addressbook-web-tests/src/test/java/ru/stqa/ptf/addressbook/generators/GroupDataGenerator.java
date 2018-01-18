@@ -6,7 +6,7 @@ import com.beust.jcommander.ParameterException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.thoughtworks.xstream.XStream;
-import ru.stqa.ptf.addressbook.Module.GroupData;
+import ru.stqa.ptf.addressbook.model.GroupData;
 
 import java.io.File;
 import java.io.FileWriter;

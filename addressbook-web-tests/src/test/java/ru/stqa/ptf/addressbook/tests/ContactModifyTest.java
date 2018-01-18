@@ -1,18 +1,10 @@
 package ru.stqa.ptf.addressbook.tests;
 
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import ru.stqa.ptf.addressbook.Module.ContactData;
-import ru.stqa.ptf.addressbook.Module.Contacts;
-import ru.stqa.ptf.addressbook.Module.Groups;
-
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
+import ru.stqa.ptf.addressbook.model.ContactData;
+import ru.stqa.ptf.addressbook.model.Contacts;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;

@@ -1,4 +1,4 @@
-package ru.stqa.ptf.addressbook.Module;
+package ru.stqa.ptf.addressbook.model;
 
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;

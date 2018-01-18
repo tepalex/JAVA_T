@@ -5,8 +5,8 @@ import com.google.gson.reflect.TypeToken;
 import com.thoughtworks.xstream.XStream;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import ru.stqa.ptf.addressbook.Module.ContactData;
-import ru.stqa.ptf.addressbook.Module.Contacts;
+import ru.stqa.ptf.addressbook.model.ContactData;
+import ru.stqa.ptf.addressbook.model.Contacts;
 
 import java.io.BufferedReader;
 import java.io.File;

@@ -2,7 +2,7 @@ package ru.stqa.ptf.addressbook.tests;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import ru.stqa.ptf.addressbook.Module.ContactData;
+import ru.stqa.ptf.addressbook.model.ContactData;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
