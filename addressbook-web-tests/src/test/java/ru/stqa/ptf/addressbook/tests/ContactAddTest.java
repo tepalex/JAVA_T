@@ -58,10 +58,7 @@ public class ContactAddTest extends TestBase {
   public void testAddContact(ContactData contact) {
     app.goTo().homePage();
     Contacts before = app.contact().all();
-    app.contact().initContact();
-    app.contact().fillContactData(contact, true);
-    app.contact().submitContactCreation();
-    app.contact().returnToHomePage();
+    app.contact().create(contact);
     assertThat(app.contact().count(), equalTo(before.size()+1));
     Contacts after = app.contact().all();
     assertThat(after, equalTo(
