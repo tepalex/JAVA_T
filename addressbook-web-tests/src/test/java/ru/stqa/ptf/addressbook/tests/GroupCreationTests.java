@@ -3,6 +3,7 @@ package ru.stqa.ptf.addressbook.tests;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.thoughtworks.xstream.XStream;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.ptf.addressbook.model.GroupData;
@@ -19,7 +20,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class GroupCreationTests extends TestBase{
 
 
-  @DataProvider
+@DataProvider
   public Iterator<Object[]> validGroupsFromXml() throws IOException {
     try (BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/groups.xml")))){
       String xml = "";
@@ -54,11 +55,10 @@ public class GroupCreationTests extends TestBase{
   @Test(dataProvider = "validGroupsfromJson")
     public void testGroupCreation(GroupData group) {
         app.goTo().groupPage();
-        Groups before = app.group().all();
+        Groups before = app.db().groups();
         app.group().create(group);
         assertThat(app.group().count(), equalTo(before.size()+1));
-        Groups after = app.group().all();
-        assertThat(after, equalTo(
-                before.withAdded( group.withId(after.stream().mapToInt((g) ->g.getId()).max().getAsInt()))));
+        Groups after = app.db().groups();
+        assertThat(after, equalTo(before.withAdded(group.withId(after.stream().mapToInt((g) ->g.getId()).max().getAsInt()))));
  }
 }

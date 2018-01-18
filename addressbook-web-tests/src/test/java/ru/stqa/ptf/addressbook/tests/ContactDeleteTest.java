@@ -12,12 +12,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.testng.Assert.assertEquals;
 
 public class ContactDeleteTest extends TestBase {
-  FirefoxDriver wd;
 
   @BeforeMethod
   public void ensurePreconditions() {
-    app.goTo().homePage();
-    if (app.contact().all().size() == 0){
+    if (app.db().contacts().size() == 0){
+      app.goTo().homePage();
       app.contact().create(new ContactData()
               .withFirstname("Alex").withLastname("Teplov").withAddress("Address")
               .withHomephone("4951234567").withMobilePhone("2000000").withWorkPhone("3000000")
@@ -28,12 +27,12 @@ public class ContactDeleteTest extends TestBase {
 
   @Test
   public void deleteContactTest() {
-    Contacts before = app.contact().all();
+    Contacts before = app.db().contacts();
     ContactData deletedContact = before.iterator().next();
     app.contact().delete(deletedContact);
     assertThat(app.contact().count(), equalTo(before.size()-1));
-    Contacts after = app.contact().all();
-    assertThat(after, CoreMatchers.equalTo(before.without(deletedContact)));
+    Contacts after = app.db().contacts();
+    assertThat(after, equalTo(before.without(deletedContact)));
 
 
   }
