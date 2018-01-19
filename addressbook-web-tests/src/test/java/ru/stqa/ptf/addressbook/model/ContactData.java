@@ -159,7 +159,7 @@ public class ContactData {
   }
 
   public String getAddress() {
-    return lastname;
+    return address;
   }
 
   public String getHomePhone() {

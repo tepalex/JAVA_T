@@ -35,12 +35,12 @@ public class ContactModifyTest extends TestBase{
             .withHomephone("+33123456789").withMobilePhone("2000000").withWorkPhone("3000000")
             .withEmail("email1@mail.com").withEmail2("email2@gmail.com").withEmail3("email3@gmail.com")
             .withGroup("test1");
+    app.goTo().homePage();
     app.contact().modify(contact);
     assertThat(app.contact().count(), equalTo(before.size()));
     Contacts after = app.db().contacts();
     assertEquals(after.size(), before.size());
     assertThat(after, equalTo(before.without(modifiedContact).withAdded(contact)));
+    verifyContactListInUI();
   }
-
-
 }
