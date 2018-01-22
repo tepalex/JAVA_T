@@ -16,12 +16,13 @@ public class ContactModifyTest extends TestBase{
   @BeforeMethod
   public void ensurePreconditions() {
     if (app.db().contacts().size() == 0){
+      Groups groups = app.db().groups();
       app.goTo().homePage();
       app.contact().create(new ContactData()
               .withFirstname("Alex").withLastname("Teplov").withAddress("Address")
               .withHomephone("4951234567").withMobilePhone("2000000").withWorkPhone("3000000")
               .withEmail("email1@mail.com").withEmail2("email2@gmail.com").withEmail3("email3@gmail.com")
-              .withGroup("test1"));
+              .inGroup(groups.iterator().next()));
     }
   }
 
@@ -34,7 +35,7 @@ public class ContactModifyTest extends TestBase{
             .withFirstname("Alex").withLastname("Teplov").withAddress("Address")
             .withHomephone("+33123456789").withMobilePhone("2000000").withWorkPhone("3000000")
             .withEmail("email1@mail.com").withEmail2("email2@gmail.com").withEmail3("email3@gmail.com")
-            .withGroup("test1");
+            ;
     app.goTo().homePage();
     app.contact().modify(contact);
     assertThat(app.contact().count(), equalTo(before.size()));
