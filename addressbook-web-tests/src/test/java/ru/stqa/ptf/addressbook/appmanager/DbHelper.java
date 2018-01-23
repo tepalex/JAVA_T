@@ -41,5 +41,13 @@ public class DbHelper {
     session.close();
     return new Contacts(result);
   }
-
+/*
+  public ContactsInGroups contacts() {
+    Session session = sessionFactory.openSession();
+    session.beginTransaction();
+    List<ContactsInGropsData> result = session.createQuery("from ContactinGropusData where deprecated = '0000-00-00'").list();
+    session.getTransaction().commit();
+    session.close();
+    return new ContactsinGroups(result);
+  }*/
 }
